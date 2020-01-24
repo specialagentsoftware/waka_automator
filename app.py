@@ -18,6 +18,7 @@ def waka():
     numheartbeat = int(f.readline())
     f.close()
     url = config.get('DEFAULT', 'Url')
+    api = config.get('DEFAULT', 'Api')
 
     files = config.items('FILES')
 
@@ -43,7 +44,7 @@ def waka():
     }
 
     req = requests.post(url, data='', json=payload, auth=(
-        '', '9fdda524-c155-4601-b4eb-1f48d05764ad'))
+        '', api))
     if(req.ok):
         response = req.json()
         local_time = time.ctime(time.time())
